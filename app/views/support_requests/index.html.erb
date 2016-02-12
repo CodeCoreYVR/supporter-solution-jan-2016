@@ -1,0 +1,29 @@
+<h1>All Requests</h1>
+
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Email</td>
+    <td>Department</td>
+    <td>Message</td>
+    <td></td>
+  </tr>
+  <% @support_requests.each do |req| %>
+    <tr>
+      <td><%= req.name %></td>
+      <td><%= req.email %></td>
+      <td><%= req.department %></td>
+      <td><%= req.message %></td>
+      <td>
+        <% if req.done? %>
+          <%= button_to "Un-Done", mark_done_support_request_path(req),
+                                method: :patch%>
+        <% else %>
+          <%= button_to "Done", mark_done_support_request_path(req),
+                              method: :patch%>
+        <% end %>
+      </td>
+    </tr>
+
+  <% end %>
+</table>

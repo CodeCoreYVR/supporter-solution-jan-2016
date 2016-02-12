@@ -1,0 +1,24 @@
+<h1>New Support Request</h1>
+
+<%= @support_request.errors.full_messages.join(", ") %>
+<%= form_for @support_request do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  <div>
+    <%= f.label :department %>
+    <%= f.radio_button :department, SupportRequest::DEPT_SALES %> Sales
+    <%= f.radio_button :department, SupportRequest::DEPT_MARKETING %> Marketing
+    <%= f.radio_button :department, SupportRequest::DEPT_TECHNICAL %> Technical
+  </div>
+  <div>
+    <%= f.label :message %>
+    <%= f.text_area :message %>
+  </div>
+  <%= f.submit %>
+<% end %>
