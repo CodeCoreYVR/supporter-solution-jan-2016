@@ -15,15 +15,26 @@
       <td><%= req.department %></td>
       <td><%= req.message %></td>
       <td>
+        <%= link_to "Edit", edit_support_request_path(req) %>
+
         <% if req.done? %>
+          <%= button_to "Un-Done", support_request_path(req, support_request: {done: false}),
+                                method: :patch%>
+        <% else %>
+        <%= button_to "Done", support_request_path(req, support_request: {done: true}),
+                              method: :patch%>
+        <% end %>
+        <!-- <% if req.done? %>
           <%= button_to "Un-Done", mark_done_support_request_path(req),
                                 method: :patch%>
         <% else %>
           <%= button_to "Done", mark_done_support_request_path(req),
                               method: :patch%>
-        <% end %>
+        <% end %> -->
       </td>
     </tr>
 
   <% end %>
 </table>
+
+<%= paginate @support_requests %>

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   patch "/support_requests/:id/mark_done" => "support_requests#mark_done", as: :mark_done_support_request
+
+  get "/support_requests/search" => "support_requests#search", as: :support_requests_search
+
   resources :support_requests
 
 
